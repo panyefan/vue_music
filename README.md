@@ -1,2 +1,3 @@
-# vue_music
-learning vue
+## 学习使用
+
+vue项目入手
