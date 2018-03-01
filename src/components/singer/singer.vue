@@ -1,3 +1,6 @@
+/**
+歌手页面
+ */
 <template>
   <div class="singer" ref="singer">
     <list-view @select="selectSinger" :data="singers" ref="list"></list-view>
@@ -38,6 +41,7 @@
         })
         this.setSinger(singer)
       },
+      // 获取歌手数据
       _getSingerList() {
         getSingerList().then((res) => {
           if (res.code === ERR_OK) {
@@ -46,6 +50,7 @@
         })
       },
       _normalizeSinger(list) {
+        // 组装数据结构
         let map = {
           hot: {
             title: HOT_NAME,
@@ -54,6 +59,7 @@
         }
         list.forEach((item, index) => {
           if (index < HOT_SINGER_LEN) {
+            // new Singer()为src\common\js\singer.js类对象
             map.hot.items.push(new Singer({
               name: item.Fsinger_name,
               id: item.Fsinger_mid
@@ -83,6 +89,7 @@
           }
         }
         ret.sort((a, b) => {
+          // charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数。
           return a.title.charCodeAt(0) - b.title.charCodeAt(0)
         })
         return hot.concat(ret)

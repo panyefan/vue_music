@@ -1,4 +1,4 @@
-// 滚动组件插槽
+// 滚动组件插槽，滚动相关的内容都放到slot里面
 
 <template>
   <div ref="wrapper">
@@ -48,6 +48,7 @@
       }
     },
     mounted() {
+      // DOM渲染完毕之后，才初始化滚动
       this.$nextTick(() => {
         this._initScroll()
       })
@@ -83,7 +84,7 @@
           })
         }
       },
-      /* better-scroll代理方法 */
+      /* better-scroll的代理方法 */
       disable() {
         this.scroll && this.scroll.disable()
       },
@@ -91,6 +92,7 @@
         this.scroll && this.scroll.enable()
       },
       refresh() {
+        // 重新计算高度
         this.scroll && this.scroll.refresh()
       },
       scrollTo() {
@@ -99,10 +101,10 @@
       scrollToElement() {
         this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
       }
-      /* better-scroll代理方法 */
+      /* better-scroll的代理方法 */
     },
     watch: {
-      data() { // 监听数据的变化
+      data() { // 监听组件传过来的数据变化，作用是组件内自己实现重新计算
         setTimeout(() => {
           this.refresh()
         }, this.refreshDelay)

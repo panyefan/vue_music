@@ -27,6 +27,7 @@ var app = express()
 var apiRoutes = express.Router()
 
 // 后端代理请求，如果前端请求的URL中有getDiscList，则使用这个后端代理请求向QQ云音乐服务器发送请求，以通过服务端的检测校验
+// 修改请求头headers的数据
 apiRoutes.get('/getDiscList', function (req, res) {
   var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
   axios.get(url, {

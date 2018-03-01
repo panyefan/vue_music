@@ -13,6 +13,7 @@ export function addClass(el, className) {
   el.className = newClass.join(' ')
 }
 
+// 获取html标签上的data-XX属性的值，技巧：后面的val是设置属性值
 export function getData(el, name, val) {
   const prefix = 'data-'
   if (val) {

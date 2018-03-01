@@ -1,3 +1,10 @@
+<!--
+  这个组件的特点：
+  1、布局分为上下两层，而且都需要滚动，上部分为左右滚动，下部分为上下滚动。
+  2、存在的问题，有这个两部分的数据获取都是异步请求，可能存在下部分的数据先渲染，上部分还没有渲染出来，
+    导致下部分的滚动高度小了，底部那部分滚动不到。
+  3、解决方案：@load="loadImage"在图片加载后，重新计算高度
+-->
 <template>
   <div class="recommend" ref="recommend">
     <!-- scroll滑动组件 -->
@@ -73,6 +80,7 @@
         this.$refs.scroll.refresh()
       },
       loadImage() { // 图片加载时调用的方法
+        // checkloaded的作用是只执行一次
         if (!this.checkloaded) {
           this.checkloaded = true
           this.$nextTick(() => {
