@@ -42,6 +42,7 @@
   import Loading from 'base/loading/loading'
   import {getData} from 'common/js/dom'
 
+  // 列表标题的高度
   const TITLE_HEIGHT = 30
   const ANCHOR_HEIGHT = 18
 
@@ -80,6 +81,7 @@
     },
     methods: {
       selectItem(item) {
+        // 将点击选择的select事件派发出去
         this.$emit('select', item)
       },
       onShortcutTouchStart(e) {

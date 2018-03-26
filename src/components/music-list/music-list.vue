@@ -35,6 +35,7 @@
   import {mapActions} from 'vuex'
 
   const RESERVED_HEIGHT = 40
+  // 对样式添加前缀
   const transform = prefixStyle('transform')
   const backdrop = prefixStyle('backdrop-filter')
 
@@ -111,26 +112,32 @@
         let scale = 1
         let zIndex = 0
         let blur = 0
+        // 滚动高度与图片高度的系数比
         const percent = Math.abs(newVal / this.imageHeight)
         if (newVal > 0) {
           scale = 1 + percent
           zIndex = 10
         } else {
+          // 设置模糊效果的最大值为20
           blur = Math.min(20, percent * 20)
         }
 
+        // 设置一个元素向上偏移一段距离
         this.$refs.layer.style[transform] = `translate3d(0,${translateY}px,0)`
+        // 设置模糊效果
         this.$refs.filter.style[backdrop] = `blur(${blur}px)`
         if (newVal < this.minTransalteY) {
           zIndex = 10
           this.$refs.bgImage.style.paddingTop = 0
           this.$refs.bgImage.style.height = `${RESERVED_HEIGHT}px`
+          // 随机播放按钮消失
           this.$refs.playBtn.style.display = 'none'
         } else {
           this.$refs.bgImage.style.paddingTop = '70%'
           this.$refs.bgImage.style.height = 0
           this.$refs.playBtn.style.display = ''
         }
+        // 对图片进行缩放
         this.$refs.bgImage.style[transform] = `scale(${scale})`
         this.$refs.bgImage.style.zIndex = zIndex
       }

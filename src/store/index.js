@@ -8,6 +8,7 @@ import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
+// 生产环境不开启调试模式，有性能损耗
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({

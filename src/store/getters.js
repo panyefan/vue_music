@@ -1,3 +1,5 @@
+// 获取播放器状态的各种实例
+
 export const singer = state => state.singer
 
 export const playing = state => state.playing
@@ -12,6 +14,7 @@ export const mode = state => state.mode
 
 export const currentIndex = state => state.currentIndex
 
+// 获取当前歌曲对象
 export const currentSong = (state) => {
   return state.playlist[state.currentIndex] || {}
 }

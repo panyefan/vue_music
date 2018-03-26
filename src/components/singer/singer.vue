@@ -35,7 +35,9 @@
         this.$refs.singer.style.bottom = bottom
         this.$refs.list.refresh()
       },
+      // 调用组件派发出来的select事件
       selectSinger(singer) {
+        // 跳转到歌手页面
         this.$router.push({
           path: `/singer/${singer.id}`
         })
