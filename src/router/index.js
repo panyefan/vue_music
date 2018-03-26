@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// 异步加载组件
 const Recommend = () => import('components/recommend/recommend')
 const Singer = () => import('components/singer/singer')
 const Rank = () => import('components/rank/rank')
